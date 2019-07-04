@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kryptr V2", "src\Kryptr V2\Kryptr V2.vcxproj", "{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptrGUI", "src\KryptrGUI\KryptrGUI.csproj", "{31481185-F574-436B-A7B3-B23483B98A5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Debug|x64.ActiveCfg = Debug|x64
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Debug|x64.Build.0 = Debug|x64
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Debug|x86.ActiveCfg = Debug|Win32
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Debug|x86.Build.0 = Debug|Win32
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Release|Any CPU.ActiveCfg = Release|Win32
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Release|x64.ActiveCfg = Release|x64
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Release|x64.Build.0 = Release|x64
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Release|x86.ActiveCfg = Release|Win32
+		{B024FB03-A7C4-4ADE-9C44-3F1E7BEE107D}.Release|x86.Build.0 = Release|Win32
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|x64.Build.0 = Debug|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|x86.ActiveCfg = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Debug|x86.Build.0 = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|x64.ActiveCfg = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|x64.Build.0 = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{31481185-F574-436B-A7B3-B23483B98A5A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B89A185-9F02-4763-8D17-5EE8BA6650CF}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

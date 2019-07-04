@@ -1,0 +1,9 @@
+{
+	"crypts": {
+		"SCARY": true,
+		"FSEC": false,
+		"SQCV":	false
+	},
+	"privateKey": "",
+	"password": ""
+}
