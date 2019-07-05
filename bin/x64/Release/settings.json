@@ -5,5 +5,7 @@
 		"SQCV":	false
 	},
 	"privateKey": "",
-	"password": ""
+	"password": "",
+	"chunkLimit": 50,
+	"noiseSeed": 10271
 }

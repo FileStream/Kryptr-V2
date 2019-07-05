@@ -28,7 +28,7 @@
                 <BlurEffect/>
             </Border.Effect>
         </Border>
-        <Button x:Name="selectButton" Content="Select file(s)" Click="SelectFilesClicked" Margin="435,120,0,249" HorizontalAlignment="Left" Width="166" FontSize="24" BorderBrush="#FF11A8C5" FontFamily="ISOCPEUR" KeyboardNavigation.TabIndex="0" Drop="FileDropped" AllowDrop="True" DragOver="FileDragged" DragLeave="FileLeft" BorderThickness="3"/>
+        <Button x:Name="selectButton" Content="Select file(s)" Click="SelectFilesClicked" Margin="435,120,0,249" HorizontalAlignment="Left" Width="166" FontSize="24" BorderBrush="#FF0597FF" FontFamily="ISOCPEUR" KeyboardNavigation.TabIndex="0" Drop="FileDropped" AllowDrop="True" DragOver="FileDragged" DragLeave="FileLeft" BorderThickness="3"/>
         <Grid x:Name="selectionBox" HorizontalAlignment="Left" Height="315" Margin="10,95,0,0" VerticalAlignment="Top" Width="365" IsEnabled="False">
             <PasswordBox x:Name="seedBox" Margin="22,36,0,254" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="1"/>
             <PasswordBox x:Name="passBox" Margin="22,83,0,212" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="2"/>

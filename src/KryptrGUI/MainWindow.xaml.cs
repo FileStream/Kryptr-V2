@@ -330,6 +330,5 @@ namespace KryptrGUI
                 compressionLevel = values[compDropdown.SelectedIndex];
             }
         }
-
     }
 }
