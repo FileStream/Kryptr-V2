@@ -5,83 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KryptrGUI"
         mc:Ignorable="d"
-        Title="Kryptr V2 GUI" Height="450" Width="668.1" ResizeMode="CanMinimize"
+        Title="Kryptr V2 GUI" Height="501" Width="668.1" ResizeMode="CanMinimize"
          DragLeave="FileLeft" DragOver="FileDragged" AllowDrop="True" Drop="FileDropped"
         >
     <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF626262" Offset="0.046"/>
-            <GradientStop Color="#FFA6A6A6" Offset="0.368"/>
-            <GradientStop Color="#FFA6A6A6" Offset="0.745"/>
-            <GradientStop Color="{DynamicResource Background}" Offset="0.983"/>
-        </LinearGradientBrush>
+        <SolidColorBrush Color="#FF787878"/>
     </Window.Background>
     <Grid>
-        <TextBox x:Name="errorLog" HorizontalAlignment="Left" Height="60" Margin="405,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Red" FontWeight="Bold" IsReadOnly="True" Focusable="False" SelectionBrush="{x:Null}" BorderThickness="0"/>
-        <Border x:Name="buttonIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="414,95,0,0" VerticalAlignment="Top" Width="210" BorderBrush="Black" CornerRadius="10" Background="#FFB3B3B3">
-            <Border.Effect>
-                <BlurEffect/>
-            </Border.Effect>
+        <Image Height="197" Margin="159,-38,158,0" VerticalAlignment="Top" Source="title.png" Stretch="Fill"/>
+        <Image Height="330" VerticalAlignment="Top" Source="kv2_9ZP_icon.ico" StretchDirection="DownOnly" Margin="-130,156,130,-14"/>
+        <Border x:Name="buttonIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="426,131,0,0" VerticalAlignment="Top" Width="210" Background="#FF8F8F8F" Opacity="0.925">
+            <GroupBox Header="Error Log" Width="190" Margin="9,227,9,4" BorderBrush="#FF6A6A6A" FontFamily="Calibri Light" FontSize="14" Foreground="Black">
+                <TextBox x:Name="errorLog" HorizontalAlignment="Left" TextWrapping="Wrap" Width="180" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Red" FontWeight="Bold" IsReadOnly="True" Focusable="False" SelectionBrush="{x:Null}" BorderThickness="0" Margin="0,0,-2,-2" Height="60" VerticalAlignment="Top"/>
+            </GroupBox>
         </Border>
-        <Border x:Name="borderIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="10,95,0,0" VerticalAlignment="Top" Width="365" BorderBrush="Black" CornerRadius="10" Background="#FFB3B3B3">
-            <Border.Effect>
-                <BlurEffect/>
-            </Border.Effect>
-        </Border>
-        <Button x:Name="selectButton" Content="Select file(s)" Click="SelectFilesClicked" Margin="435,120,0,249" HorizontalAlignment="Left" Width="166" FontSize="24" BorderBrush="#FF0597FF" FontFamily="ISOCPEUR" KeyboardNavigation.TabIndex="0" Drop="FileDropped" AllowDrop="True" DragOver="FileDragged" DragLeave="FileLeft" BorderThickness="3"/>
-        <Grid x:Name="selectionBox" HorizontalAlignment="Left" Height="315" Margin="10,95,0,0" VerticalAlignment="Top" Width="365" IsEnabled="False">
+        <Border x:Name="borderIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="365" Background="#FF8F8F8F" Opacity="0.925"/>
+        <Button x:Name="selectButton" Content="Select file(s)" Click="SelectFilesClicked" Margin="447,156,0,0" HorizontalAlignment="Left" Width="166" FontSize="24" BorderBrush="#FF0597FF" KeyboardNavigation.TabIndex="0" Drop="FileDropped" AllowDrop="True" DragOver="FileDragged" DragLeave="FileLeft" BorderThickness="3" FontFamily="Calibri Light" Height="52" VerticalAlignment="Top"/>
+        <Grid x:Name="selectionBox" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="365" IsEnabled="False">
             <PasswordBox x:Name="seedBox" Margin="22,36,0,254" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="1"/>
             <PasswordBox x:Name="passBox" Margin="22,83,0,212" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="2"/>
             <PasswordBox x:Name="pubBox" Margin="22,131,0,159" HorizontalAlignment="Left" Width="233" Height="20.4" FontFamily="Sitka Text" KeyboardNavigation.TabIndex="3"/>
-            <CheckBox x:Name="useCompressionBox" Content="Use double-layered compression" HorizontalAlignment="Left" Margin="60,214,0,0" VerticalAlignment="Top" Height="17" Width="195" IsChecked="True" FontFamily="Swis721 Lt BT" KeyboardNavigation.TabIndex="5"/>
+            <CheckBox x:Name="useCompressionBox" Content="Use double-layered compression" HorizontalAlignment="Left" Margin="60,214,0,0" VerticalAlignment="Top" Height="17" Width="195" IsChecked="True" KeyboardNavigation.TabIndex="5" FontFamily="Calibri"/>
             <Button x:Name="compressionHelp" Content="?" HorizontalAlignment="Left" Margin="267,212,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowCompressionHelp"/>
             <Button x:Name="pubHelp" Content="?" HorizontalAlignment="Left" Margin="267,135,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowPubHelp" RenderTransformOrigin="-5.976,0.282"/>
             <Button x:Name="passHelp" Content="?" HorizontalAlignment="Left" Margin="267,85,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowPassHelp"/>
             <Button x:Name="seedHelp" Content="?" HorizontalAlignment="Left" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="19" FontFamily="Mongolian Baiti" Margin="267,38,0,0" Background="#FFCE3030" Click="ShowSeedHelp"/>
-            <Label x:Name="pubLabel" Content="Public Key:" HorizontalAlignment="Left" Margin="22,108,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="23" Width="65" FontSize="10"/>
+            <Label x:Name="pubLabel" Content="Public Key:" HorizontalAlignment="Left" Margin="22,108,0,0" VerticalAlignment="Top" Height="23" Width="65" FontFamily="Calibri"/>
             <Label HorizontalAlignment="Left" Margin="20,74,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="seedLabel" Content="Seed:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,14,0,0" FontWeight="Bold" Height="22" Width="36" FontSize="10"/>
-            <Label x:Name="passLabel" Content="Password:" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="23" Width="59" FontSize="10"/>
-            <CheckBox x:Name="useProcessingBox" Content="Use full processing power" HorizontalAlignment="Left" Margin="60,265,0,0" VerticalAlignment="Top" Height="17" Width="195" IsChecked="True" FontFamily="Swis721 Lt BT" KeyboardNavigation.TabIndex="7"/>
+            <Label x:Name="seedLabel" Content="Seed:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,14,0,0" Height="22" Width="36" FontFamily="Calibri"/>
+            <Label x:Name="passLabel" Content="Password:" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" Height="23" Width="59" FontFamily="Calibri"/>
+            <CheckBox x:Name="useProcessingBox" Content="Use full processing power" HorizontalAlignment="Left" Margin="60,265,0,0" VerticalAlignment="Top" Height="17" Width="195" IsChecked="True" KeyboardNavigation.TabIndex="7" FontFamily="Calibri"/>
             <Button x:Name="processingHelp" Content="?" HorizontalAlignment="Left" Margin="227,263,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowProcessingHelp"/>
-            <CheckBox x:Name="keepOriginalBox" Content="Keep original files" HorizontalAlignment="Left" Margin="60,239,0,0" VerticalAlignment="Top" Height="17" Width="195" FontFamily="Swis721 Lt BT" KeyboardNavigation.TabIndex="6"/>
+            <CheckBox x:Name="keepOriginalBox" Content="Keep original files" HorizontalAlignment="Left" Margin="60,239,0,0" VerticalAlignment="Top" Height="17" Width="195" KeyboardNavigation.TabIndex="6" FontFamily="Calibri"/>
             <Button x:Name="keepOriginalHelp" Content="?" HorizontalAlignment="Left" Margin="185,237,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowKeepOriginalHelp" RenderTransformOrigin="-0.978,0.576"/>
-            <ComboBox x:Name="compDropdown" HorizontalAlignment="Left" Margin="60,181,0,0" VerticalAlignment="Top" Width="115" Height="22" SelectedIndex="2" SelectionChanged="ComplevelChanged" FontFamily="ISOCPEUR" FontSize="14" KeyboardNavigation.TabIndex="4">
+            <ComboBox x:Name="compDropdown" HorizontalAlignment="Left" Margin="60,181,0,0" VerticalAlignment="Top" Width="115" Height="22" SelectedIndex="2" SelectionChanged="ComplevelChanged" FontSize="14" KeyboardNavigation.TabIndex="4" FontFamily="Calibri Light">
                 <ComboBoxItem Content="Lowest"/>
                 <ComboBoxItem Content="Low"/>
                 <ComboBoxItem Content="Normal"/>
                 <ComboBoxItem Content="High"/>
                 <ComboBoxItem Content="Max"/>
             </ComboBox>
-            <Label x:Name="pubLabel_Copy" Content="Compression Level:" HorizontalAlignment="Left" Margin="60,158,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="23" Width="100" FontSize="10"/>
+            <Label x:Name="pubLabel_Copy" Content="Compression Level:" HorizontalAlignment="Left" Margin="60,158,0,0" VerticalAlignment="Top" Height="23" Width="100" FontFamily="Calibri"/>
             <Button x:Name="compLevelHelp" Content="?" HorizontalAlignment="Left" Margin="185,184,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowCompLevelHelp"/>
-            <CheckBox x:Name="useScrambleBox" Content="Scramble filenames" HorizontalAlignment="Left" Margin="60,289,0,0" VerticalAlignment="Top" Height="17" Width="195" FontFamily="Swis721 Lt BT" KeyboardNavigation.TabIndex="7"/>
+            <CheckBox x:Name="useScrambleBox" Content="Scramble filenames" HorizontalAlignment="Left" Margin="60,289,0,0" VerticalAlignment="Top" Height="17" Width="195" KeyboardNavigation.TabIndex="7" FontFamily="Calibri"/>
             <Button x:Name="scrambleHelp" Content="?" HorizontalAlignment="Left" Margin="195,287,0,0" VerticalAlignment="Top" Width="18" FontWeight="Bold" Height="17" FontFamily="Mongolian Baiti" Background="#FFCE3030" Click="ShowScrambleHelp"/>
         </Grid>
-        <Button x:Name="runButton" Content="Run" Click="RunClicked" Margin="435,192,0,177" HorizontalAlignment="Left" Width="166" FontSize="24" FontFamily="ISOCPEUR" Background="#FFCE3030" IsEnabled="False" FontWeight="Bold" IsDefault="True" KeyboardNavigation.TabIndex="8"/>
-        <Label Content="Kryptr" HorizontalAlignment="Center" VerticalAlignment="Top" Height="103" Width="220" FontSize="72" FontFamily="Old English Text MT" TextOptions.TextHintingMode="Fixed" Margin="61,-18,380.6,0" Background="{x:Null}" Foreground="#FFC20000" FontWeight="Bold"/>
-        <Label Content="Kryptr" HorizontalAlignment="Center" VerticalAlignment="Top" Height="103" Width="220" FontSize="72" FontFamily="Old English Text MT" TextOptions.TextHintingMode="Fixed" Margin="65,-19,376.6,0" Background="{x:Null}" Foreground="#FF181818"/>
-        <Label Content="indissolubili sociavit" HorizontalAlignment="Left" Margin="82,66,0,0" VerticalAlignment="Top" Width="172" FontFamily="Monotype Corsiva" FontSize="22" Height="34"/>
-        <Rectangle HorizontalAlignment="Left" Height="482" Margin="142,-194,0,0" VerticalAlignment="Top" Width="98" Panel.ZIndex="-3" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#C6B72D2D" Offset="0.464"/>
-                    <GradientStop Color="#00978383" Offset="0.046"/>
-                    <GradientStop Color="#00978383" Offset="0.954"/>
-                    <GradientStop Color="#C6B72D2D" Offset="0.652"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Button x:Name="recoverButton" Click="RecoverClicked" Margin="435,263,0,106" HorizontalAlignment="Left" Width="166" FontSize="18" BorderBrush="#FF707070" FontFamily="ISOCPEUR" KeyboardNavigation.TabIndex="9">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="16"><Run Text="Encrypt text / Recover a public key"/></TextBlock>
+        <Button x:Name="runButton" Content="Run" Click="RunClicked" Margin="447,228,0,0" HorizontalAlignment="Left" Width="166" FontSize="24" Background="#FFCE3030" IsEnabled="False" FontWeight="Bold" IsDefault="True" KeyboardNavigation.TabIndex="8" FontFamily="Calibri Light" Height="52" VerticalAlignment="Top"/>
+        <Button x:Name="recoverButton" Click="RecoverClicked" Margin="447,299,0,0" HorizontalAlignment="Left" Width="166" FontSize="18" BorderBrush="#FF707070" FontFamily="ISOCPEUR" KeyboardNavigation.TabIndex="9" Height="52" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontFamily="Calibri Light"><Run Text="Encrypt text"/><InlineUIContainer>
+                    <Separator Height="5" Margin="0" Width="140"/>
+                </InlineUIContainer><Run Text="Recover a public key"/></TextBlock>
         </Button>
+        <Button x:Name="MusicButton" HorizontalAlignment="Left" Margin="0,446,0,0" VerticalAlignment="Top" Width="28" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="RevealMusicButton" MouseLeave="HideMusicButton" Click="PlayMusic" Opacity="0">
+            <Image Width="auto" Height="auto" MinWidth="{Binding ActualWidth, ElementName=button, Mode=OneWay}" MinHeight="{Binding ActualHeight, ElementName=button, Mode=OneWay}" Source="500px-Speaker_Icon.svg.png"/>
+        </Button>
+        <MediaElement x:Name="MusicPlayer" HorizontalAlignment="Left" Height="13" Margin="626,453,0,0" VerticalAlignment="Top" Width="10" Opacity="0"/>
     </Grid>
 </Window>
