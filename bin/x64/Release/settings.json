@@ -7,5 +7,10 @@
 	"privateKey": "",
 	"password": "",
 	"chunkLimit": 50,
-	"noiseSeed": 10271
+	"noiseSeed": 10271,
+	"useCompression": true,
+	"deleteOriginals": true,
+	"scrambleName": false,
+	"compressionLevel": 5,
+	"useFullPower": true
 }
