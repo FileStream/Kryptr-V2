@@ -68,7 +68,7 @@ namespace KryptrGUI
                 else
                 {
                     #if COMPATIBLE_WITH_V1
-                    if (file.Contains(".kv2"))
+                    if (s.Contains(".kv2"))
                     {
                       containsEncrypted = true;
                     }
