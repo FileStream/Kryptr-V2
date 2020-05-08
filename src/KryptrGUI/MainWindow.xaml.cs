@@ -1,6 +1,7 @@
-﻿using Microsoft.Win32;
+﻿//#define COMPATIBLE_WITH_V1
+
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Media;
+
 
 namespace KryptrGUI
 {
@@ -41,10 +43,22 @@ namespace KryptrGUI
                 {
                     foreach (string file in Directory.GetFiles(s))
                     {
+                        #if COMPATIBLE_WITH_V1
                         if (file.Contains(".kv2"))
                         {
                             containsEncrypted = true;
                         }
+                        #else
+                        byte[] marker = new byte[3];
+                        using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                        {
+                            fs.Seek(-3, SeekOrigin.End);
+                            fs.Read(marker, 0, 3);
+                        }
+                        if (System.Text.Encoding.UTF8.GetString(marker) == "kv2") {
+                            containsEncrypted = true;
+                        }
+                        #endif
                         else
                         {
                             containsPlain = true;
@@ -53,10 +67,23 @@ namespace KryptrGUI
                 }
                 else
                 {
-                    if (s.Contains(".kv2"))
+                    #if COMPATIBLE_WITH_V1
+                    if (file.Contains(".kv2"))
+                    {
+                      containsEncrypted = true;
+                    }
+                    #else
+                    byte[] marker = new byte[3];
+                    using (FileStream fs = new FileStream(s, FileMode.Open, FileAccess.Read))
+                    {
+                        fs.Seek(-3, SeekOrigin.End);
+                        fs.Read(marker, 0, 3);
+                    }
+                    if (System.Text.Encoding.UTF8.GetString(marker) == "kv2")
                     {
                         containsEncrypted = true;
                     }
+                    #endif
                     else
                     {
                         containsPlain = true;
