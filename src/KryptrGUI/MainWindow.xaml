@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KryptrGUI"
         mc:Ignorable="d"
-        Title="Kryptr V2 GUI" Height="501" Width="668.1" ResizeMode="CanMinimize"
+        Title="Kryptr V2 GUI" Height="621" Width="668.1" ResizeMode="CanMinimize"
          DragLeave="FileLeft" DragOver="FileDragged" AllowDrop="True" Drop="FileDropped"
         >
     <Window.Background>
@@ -56,9 +56,12 @@
                     <Separator Height="5" Margin="0" Width="140"/>
                 </InlineUIContainer><Run Text="Recover a public key"/></TextBlock>
         </Button>
-        <Button x:Name="MusicButton" HorizontalAlignment="Left" Margin="0,446,0,0" VerticalAlignment="Top" Width="28" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="RevealMusicButton" MouseLeave="HideMusicButton" Click="PlayMusic" Opacity="0">
+        <Button x:Name="MusicButton" HorizontalAlignment="Left" Margin="0,557,0,0" VerticalAlignment="Top" Width="28" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="RevealMusicButton" MouseLeave="HideMusicButton" Click="PlayMusic" Opacity="0">
             <Image Width="auto" Height="auto" MinWidth="{Binding ActualWidth, ElementName=button, Mode=OneWay}" MinHeight="{Binding ActualHeight, ElementName=button, Mode=OneWay}" Source="500px-Speaker_Icon.svg.png"/>
         </Button>
         <MediaElement x:Name="MusicPlayer" HorizontalAlignment="Left" Height="13" Margin="626,453,0,0" VerticalAlignment="Top" Width="10" Opacity="0"/>
+        <ListBox x:Name="fileList" HorizontalAlignment="Left" Height="100" Margin="137,473,0,0" VerticalAlignment="Top" Width="395" Background="#FF8D8D8D" BorderBrush="#FF8D8D8D"/>
+        <Label x:Name="pubLabel_Copy1" Content="Selected files:" HorizontalAlignment="Left" Margin="260,438,0,0" VerticalAlignment="Top" Height="42" Width="145" FontFamily="Calibri" FontSize="24"/>
+        <Button x:Name="clearListButton" Content="Clear list" Click="ClearListClicked" Margin="544,508,0,0" HorizontalAlignment="Left" Width="100" FontSize="18" Background="#FFDDDDDD" FontWeight="Bold" KeyboardNavigation.TabIndex="10" FontFamily="Calibri Light" Height="32" VerticalAlignment="Top" IsEnabled="False"/>
     </Grid>
 </Window>

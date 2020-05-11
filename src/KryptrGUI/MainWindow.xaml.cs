@@ -3,6 +3,7 @@
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -23,13 +24,37 @@ namespace KryptrGUI
         public MainWindow()
         {
             InitializeComponent();
-
+            fileList.ItemsSource = fileButtons;
         }
 
-        private string[] filesToEncode;
+        private List<string> filesToEncode = new List<string>();
+        private List<Button> fileButtons = new List<Button>();
         private bool containsEncrypted;
         private bool containsPlain;
         private int compressionLevel = 5;
+
+        private void updateFileList()
+        {
+            foreach (string path in filesToEncode)
+            {
+                if (fileButtons.Find((button) => (string)button.Content == path) != null) continue;
+                Button newButton = new Button();
+                newButton.Content = path;
+                newButton.MinWidth = 364;
+                newButton.Click += fileButtonClicked;
+                fileButtons.Add(newButton);
+            }
+            fileList.Items.Refresh();
+        }
+
+        private void fileButtonClicked(object sender, EventArgs e)
+        {
+            ((Button)sender).Click -= fileButtonClicked;
+            string path = (string)((Button)sender).Content;
+            filesToEncode.Remove(path);
+            fileButtons.Remove((Button)sender);
+            UpdateSelections();
+        }
 
         private void CheckSelectionContents()
         {
@@ -94,8 +119,13 @@ namespace KryptrGUI
 
         private void UpdateSelections()
         {
-            if (filesToEncode.Length >= 1)
+            updateFileList();
+
+            if (filesToEncode.Count != 0)
             {
+                clearListButton.IsEnabled = true;
+                errorLog.Visibility = Visibility.Hidden;
+
                 runButton.IsEnabled = true;
                 selectionBox.IsEnabled = true;
                 CheckSelectionContents();
@@ -137,10 +167,12 @@ namespace KryptrGUI
                     useScrambleBox.IsEnabled = false;
                     scrambleHelp.IsEnabled = false;
                 }
-                errorLog.Visibility = Visibility.Hidden;
             }
             else
             {
+                clearListButton.IsEnabled = false;
+                runButton.IsEnabled = false;
+                selectionBox.IsEnabled = false;
                 errorLog.Text = "ERROR: Please select at least 1 file.";
                 errorLog.Visibility = Visibility.Visible;
             }
@@ -156,15 +188,18 @@ namespace KryptrGUI
                 Title = "Select files to encrypt/decrypt"
             };
             ofd.ShowDialog(this);
-            filesToEncode = ofd.FileNames;
+            foreach (string filename in ofd.FileNames)
+            {
+                if (!filesToEncode.Contains(filename))
+                    filesToEncode.Add(filename);
+            }
             UpdateSelections();
         }
 
         private void RunClicked(object sender, RoutedEventArgs e)
         {
-            if (filesToEncode != Array.Empty<string>())
+            if (filesToEncode.Count != 0)
             {
-
                 foreach (string s in filesToEncode)
                 {
                     if (!Directory.Exists(s) && !File.Exists(s))
@@ -259,8 +294,19 @@ namespace KryptrGUI
                     doScramble = "NULL";
                 }
 
+                fileButtons.Clear();
+                filesToEncode.Clear();
+                fileList.Items.Refresh();
+
                 ProcessStartInfo psi = new ProcessStartInfo($@"{System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)}\Kryptr V2.exe", $"GUIHOOK \"{inputs}\" \"{seedValue}\" \"{passBox.Password}\" \"{pubValue}\" {useCompression} {useProcessing} {keepOriginals} {compressionLevel} {doScramble}");
                 Process.Start(psi);
+            }
+            else
+            {
+                runButton.IsEnabled = false;
+                selectionBox.IsEnabled = false;
+                errorLog.Text = "ERROR: Please select at least 1 file.";
+                errorLog.Visibility = Visibility.Visible;
             }
         }
 
@@ -312,7 +358,11 @@ namespace KryptrGUI
                 FileLeft(sender, e);
                 return;
             }
-            filesToEncode = (string[])e.Data.GetData(DataFormats.FileDrop, true);
+            foreach (string filename in (string[])e.Data.GetData(DataFormats.FileDrop, true))
+            {
+                if (!filesToEncode.Contains(filename))
+                    filesToEncode.Add(filename);
+            }
             UpdateSelections();
             FileLeft(sender, e);
         }
@@ -385,6 +435,14 @@ namespace KryptrGUI
                 sp.Stop();
             }
             musicIsOn = !musicIsOn;
+        }
+
+        private void ClearListClicked(object sender, RoutedEventArgs e)
+        {
+            fileButtons.Clear();
+            filesToEncode.Clear();
+            clearListButton.IsEnabled = false;
+            UpdateSelections();
         }
     }
 }
