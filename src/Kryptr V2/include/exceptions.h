@@ -7,6 +7,7 @@ private:
 	const char* msg;
 public:
 	KV2Exception(const char* ms) : msg(ms) {}
+	KV2Exception(std::string ms) : msg(ms.c_str()) {}
 
 	const char* what() {
 		return this->msg;
