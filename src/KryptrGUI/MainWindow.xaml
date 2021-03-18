@@ -13,15 +13,15 @@
     </Window.Background>
     <Grid>
         <Image Height="197" Margin="159,-38,158,0" VerticalAlignment="Top" Source="title.png" Stretch="Fill"/>
-        <Image Height="330" VerticalAlignment="Top" Source="kv2_9ZP_icon.ico" StretchDirection="DownOnly" Margin="-130,156,130,-14"/>
+        <Image Height="290" VerticalAlignment="Top" Source="kv2_9ZP_icon.ico" StretchDirection="DownOnly" Margin="46,156,360,0" HorizontalAlignment="Center"/>
         <Border x:Name="buttonIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="426,131,0,0" VerticalAlignment="Top" Width="210" Background="#FF8F8F8F" Opacity="0.925">
             <GroupBox Header="Error Log" Width="190" Margin="9,227,9,4" BorderBrush="#FF6A6A6A" FontFamily="Calibri Light" FontSize="14" Foreground="Black">
                 <TextBox x:Name="errorLog" HorizontalAlignment="Left" TextWrapping="Wrap" Width="180" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Red" FontWeight="Bold" IsReadOnly="True" Focusable="False" SelectionBrush="{x:Null}" BorderThickness="0" Margin="0,0,-2,-2" Height="60" VerticalAlignment="Top"/>
             </GroupBox>
         </Border>
-        <Border x:Name="borderIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="365" Background="#FF8F8F8F" Opacity="0.925"/>
+        <Border x:Name="borderIndent" BorderThickness="1" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="308" Background="#FF8F8F8F" Opacity="0.925"/>
         <Button x:Name="selectButton" Content="Select file(s)" Click="SelectFilesClicked" Margin="447,156,0,0" HorizontalAlignment="Left" Width="166" FontSize="24" BorderBrush="#FF0597FF" KeyboardNavigation.TabIndex="0" Drop="FileDropped" AllowDrop="True" DragOver="FileDragged" DragLeave="FileLeft" BorderThickness="3" FontFamily="Calibri Light" Height="52" VerticalAlignment="Top"/>
-        <Grid x:Name="selectionBox" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="365" IsEnabled="False">
+        <Grid x:Name="selectionBox" HorizontalAlignment="Left" Height="315" Margin="22,131,0,0" VerticalAlignment="Top" Width="308" IsEnabled="False">
             <PasswordBox x:Name="seedBox" Margin="22,36,0,254" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="1"/>
             <PasswordBox x:Name="passBox" Margin="22,83,0,212" HorizontalAlignment="Left" Width="233" Height="20.4" KeyboardNavigation.TabIndex="2"/>
             <PasswordBox x:Name="pubBox" Margin="22,131,0,159" HorizontalAlignment="Left" Width="233" Height="20.4" FontFamily="Sitka Text" KeyboardNavigation.TabIndex="3"/>

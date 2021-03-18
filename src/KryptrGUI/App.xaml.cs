@@ -13,5 +13,6 @@ namespace KryptrGUI
     /// </summary>
     public partial class App : Application
     {
+       static internal string[] FileArgs;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Media;
+using System.Text.RegularExpressions;
 
 
 namespace KryptrGUI
@@ -21,17 +22,22 @@ namespace KryptrGUI
     public partial class MainWindow : Window
     {
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            fileList.ItemsSource = fileButtons;
-        }
-
         private List<string> filesToEncode = new List<string>();
         private List<Button> fileButtons = new List<Button>();
         private bool containsEncrypted;
         private bool containsPlain;
         private int compressionLevel = 5;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            fileList.ItemsSource = fileButtons;
+            if (App.FileArgs != null && App.FileArgs.Length > 0)
+            {
+                filesToEncode.AddRange(App.FileArgs);
+                UpdateSelections();
+            }
+        }
 
         private void updateFileList()
         {
@@ -216,13 +222,9 @@ namespace KryptrGUI
                     errorLog.Visibility = Visibility.Visible;
                     return;
                 }
-                string inputs = "";
+                string inputs = string.Join(",", filesToEncode);
                 string pubValue;
                 string seedValue;
-                foreach (string s in filesToEncode)
-                {
-                    inputs += s + ((s != filesToEncode.Last()) ? "," : "");
-                }
 
                 if (seedBox.Password != "")
                 {
@@ -401,14 +403,7 @@ namespace KryptrGUI
         private void ComplevelChanged(object sender, SelectionChangedEventArgs e)
         {
             int[] values = { 1, 3, 5, 7, 9 };
-            if (compDropdown.SelectedIndex == 0)
-            {
-                compressionLevel = 1;
-            }
-            else
-            {
-                compressionLevel = values[compDropdown.SelectedIndex];
-            }
+            compressionLevel = values[compDropdown.SelectedIndex];
         }
 
         private void RevealMusicButton(object sender, System.Windows.Input.MouseEventArgs e)
@@ -421,20 +416,20 @@ namespace KryptrGUI
             MusicButton.Opacity = 0;
         }
 
-        bool musicIsOn = false;
-        SoundPlayer sp = new SoundPlayer();
+        bool MusicOn = false;
+        SoundPlayer SoundPlayer = new SoundPlayer();
         private void PlayMusic(object sender, RoutedEventArgs e)
         {
-            if (!musicIsOn)
+            if (!MusicOn)
             {
-                sp.Stream = Properties.Resources.MU;
-                sp.PlayLooping();
+                SoundPlayer.Stream = Properties.Resources.MU;
+                SoundPlayer.PlayLooping();
             }
             else
             {
-                sp.Stop();
+                SoundPlayer.Stop();
             }
-            musicIsOn = !musicIsOn;
+            MusicOn = !MusicOn;
         }
 
         private void ClearListClicked(object sender, RoutedEventArgs e)
