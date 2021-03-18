@@ -27,7 +27,7 @@ class Colors {
 public:
     static inline void TextColor(int fontcolor, int backgroundcolor)
     {
-        static HANDLE screen; //Hacky way to prevent GetStdHandle running multiple times
+        static HANDLE screen;
         if (screen == nullptr) {
             screen = GetStdHandle(STD_OUTPUT_HANDLE);
         }

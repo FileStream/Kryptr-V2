@@ -6,7 +6,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <filesystem>
-#include "exceptions.h"
 #include "fileapi.h"
 #include "ioapiset.h"
 #include "winioctl.h"
@@ -114,7 +113,7 @@ private:
 			return dtd.TrimEnabled;
 		}
 		else {
-			throw KV2Exception("Unable to obtain drive handle.");
+			throw std::exception("Unable to obtain drive handle.");
 			std::cin.ignore(LLONG_MAX);
 			return false;
 		}
@@ -123,9 +122,9 @@ private:
 public:
 
 	// Shred a file
-	static void ShredFile(const path& inputPath)
+	static void ShredFile(const path& inputPath, bool doWarning)
 	{
-		if (DataOnSSD(inputPath)) {
+		if (DataOnSSD(inputPath) && doWarning) {
 			Colors::TextColor(YELLOW, BLACK);
 			printf("\n\nFile at \"%s\" is on an SSD, and thus cannot be shredded.\nIf you would like to securely erase this file, \
 it is recommended that you either wipe the drive or execute a trim.", inputPath.string().c_str());
